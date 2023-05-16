@@ -1,42 +1,27 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+Appen behöver internet access, och efter det implementeras glide dependencies vilket används
+för att hämta bilder från externa libraries, build.gradle:
 
-_Du kan ta bort all text som finns sedan tidigare_.
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
 
-## Följande grundsyn gäller dugga-svar:
+För att kunna visa upp bilden läggs en ImageView till, med id imageView, och sedan kan glide 
+importeras i MainActivity.java:
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
+    import com.bumptech.glide.Glide;
+    import com.bumptech.glide.request.RequestOptions;
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+Inom onCreate finns koden för att hämta och visa upp vilket bild som helst som det länkas till:
 
-```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
-```
+    ImageView imageView = findViewById(R.id.imageView);
+    String imageUrl = "https://cdn.pixabay.com/photo/2023/05/11/05/40/blackbird-7985552_960_720.jpg";
 
-Bilder läggs i samma mapp som markdown-filen.
+    Glide.with(this)
+            .load(imageUrl)
+            .apply(new RequestOptions().centerCrop())
+            .into(imageView);
 
-![](android.png)
+Appen ser ut som sådan:
 
-Läs gärna:
-
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+<img src="pictureUploaded.jpg" alt="Picture" width="25%">
