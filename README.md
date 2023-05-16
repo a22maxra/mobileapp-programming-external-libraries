@@ -24,4 +24,4 @@ Inom onCreate finns koden för att hämta och visa upp vilket bild som helst som
 
 Appen ser ut som sådan:
 
-<img src="pictureUploaded.jpg" alt="Picture" width="25%">
+<img src="pictureUploaded.png" alt="Picture" width="25%">
